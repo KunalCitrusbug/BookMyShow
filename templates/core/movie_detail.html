@@ -1,0 +1,243 @@
+{% load static %}
+<html>
+<head>
+    <title>Book My Tickets</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'master/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'master/css/bookShow.css' %}"/>
+
+</head>
+<body style="background-color: #ffffff;color: black">
+<nav class="navbar navbar-default" style="margin-bottom: 0">
+    <div class="container-fluid" style="background-color: #192030;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <img src="{% static 'core/images/logo2.png' %}" height="80px">
+        </div>
+    </div>
+</nav>
+<div class="sub_nav"
+     style="height: 25px;background-color: #3b455e;margin-bottom: 5px;border-bottom-left-radius: 40px;border-bottom-right-radius: 40px"></div>
+{#-------------------------------------------------------------------------#}
+{#             BANNER SECTION          #}
+{#-------------------------------------------------------------------------#}
+<section class="sc-qswwm9-0 ljnioe">
+    <div class="sc-qswwm9-1 eQtXbA"
+         style="background-image: linear-gradient(90deg, rgb(26, 26, 26) 24.97%,
+                 rgb(26, 26, 26) 38.3%, rgba(26, 26, 26, 0.04) 97.47%, rgb(26, 26, 26) 100%),
+                 url({{ movie.banner.url }});height: 500px">
+        <div class="sc-qswwm9-2 cUDDgh">
+            <div class="sc-qswwm9-4 eWuQcQ">
+                <section class="sc-bsek5f-0 fSyllq" id="banner_data">
+                    <div class="section_content">
+                        <div type="vertical" class="sc-echj48-0 iCYiPJ">
+                            <div class="sc-echj48-6 csqwyD"
+                                 style="border-radius: 16px 16px 0px 0px; object-fit: cover;">
+                                <img src="{{ movie.image.url }}" width="320px" height="440px" class="sc-echj48-5 hutamn"
+                                     style="border-radius: 16px 16px 0px 0px; object-fit: cover;"></div>
+                        </div>
+                        <div class="inner-data">
+                            <h3 style="color:white;font-weight: bolder;font-size: 50px">{{ movie.name }}</h3>
+
+                            <div class="sc-2k6tnd-0 ddXVHR">
+                                <div class="sc-2k6tnd-1 btqyFP">
+                                    <div class="sc-2k6tnd-4 fdHSZD">{{ movie.type }}</div>
+                                    <div class="sc-2k6tnd-4 fdHSZD">
+                                        {% for i in movie.language.values %}
+                                            {{ i.language }},
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="sc-2k6tnd-1 btqyFP">{{ movie.duration }}
+                                    <span class="sc-2k6tnd-5 kvkTzz">  •  </span>
+                                    {% for tag in movie.tags %}
+                                        <span class="sc-2k6tnd-2 ijNbsp">{{ tag }},</span>
+                                    {% endfor %}
+                                    <span class="sc-2k6tnd-5 kvkTzz">  •  </span>
+                                    UA
+                                    <span class="sc-2k6tnd-5 kvkTzz">  •  </span>
+                                    {{ movie.release_date }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{#-------------------------------------------------------------------------#}
+{#             ABOUT MOVIE          #}
+{#-------------------------------------------------------------------------#}
+
+<div class="container">
+    <div class="title">
+        <h3 style="font-size: 35px;font-weight: bold">
+            About the movie
+        </h3>
+    </div>
+    <div class="content" style="margin-bottom: 20px">
+        <p>
+            {{ movie.movie_description }}
+        </p>
+    </div>
+    <hr>
+</div>
+
+{#-------------------------------------------------------------------------#}
+{#            BOOK TIKCETS BUTTON          #}
+{#-------------------------------------------------------------------------#}
+
+<div class="book_ticket_button" style="
+    width: 100%;
+    display: flex;
+    justify-content: center;">
+    <button onclick="show_div()" class="btn" type="button" style="
+    color:#ffffff;
+    background-color: rgb(247,68,101);
+    font-size: 25px;
+    border-radius: 10px;
+    width: 200px;
+    ">
+        Book Tickets
+    </button>
+
+</div>
+
+
+{#-------------------------------------------------------------------------#}
+{#            BOOK TIKCETS DIV         #}
+{#-------------------------------------------------------------------------#}
+
+<div class="container" id="bookticketdiv" style="display: none">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary" style="border-radius: 15px">
+                <div class="panel-heading" id="book-ticket-heading" style="border-radius: 15px">
+                    <h3 class="panel-title">Book your tickets</h3>
+                </div>
+                <div class="panel-body" id="book-ticket-body">
+                    <form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 btn-group btn-input clearfix">
+                                    <button type="button"
+                                            class="btn btn-default movies-toggle dropdown-toggle form-control"
+                                            data-toggle="dropdown">
+                                        <span data-bind="label">Select Movie</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="movies dropdown-menu col-md-11 col-xs-11" role="menu">
+                                    </ul>
+                                </div>
+
+
+                                <div class="col-md-4 col-xs-12 btn-group btn-input clearfix">
+                                    <button type="button"
+                                            class="btn btn-default category-toggle dropdown-toggle form-control disabled"
+                                            data-toggle="dropdown">
+                                        <span data-bind="label">Select Category</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="movie_category dropdown-menu col-md-11 col-xs-11" role="menu">
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4 col-xs-12 btn-group btn-input clearfix">
+                                    <button type="button"
+                                            class="btn btn-default quantity-toggle dropdown-toggle form-control disabled"
+                                            data-toggle="dropdown">
+                                        <span data-bind="label">Quantity</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="quantity dropdown-menu col-md-11 col-xs-11" role="menu">
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-2 col-xs-12" style="float:right;">
+                                    <input class="book col-xs-12 btn btn-md btn-success" type="button"
+                                           value="Book Tickets" data-toggle="modal" data-target="#exampleModalCenter2">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#---------------------------SEFL MADE MODAL-------------------------------------------#}
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{#-------------------------------------------READY MADE DIV-------------------------------------#}
+{% comment %}
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="seats_alert alert alert-dismissible" role="alert">
+                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                    <span></span>
+                </div>
+                <div class="book_alert alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                    <span></span>
+                </div>
+
+                <div class="main_con
+                tainer" id="container">
+
+                    <!--Inside here the seat map will be created by the js file-->
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary disabled checkout">Checkout</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endcomment %}
+</body>
+<script>
+    function show_div() {
+        var x = document.getElementById("bookticketdiv");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+<script type="text/javascript" src="{% static 'master/js/jquery.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'master/js/bootstrap.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'master/js/bookShow.js' %}">
+</script>

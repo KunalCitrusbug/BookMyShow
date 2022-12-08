@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Book My Tickets</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'master/css/bootstrap.min.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'master/css/bookShow.css' %}"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Book My Tickets</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+					</ul>
+
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+
+
+
+		<!--Ticket booking panel with dropdown for selecting movie,category and quantity-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+						<h3 class="panel-title">Book your tickets</h3>
+						</div>
+						<div class="panel-body">
+							<form accept-charset="UTF-8" role="form">
+								<fieldset>
+									<div class="row">
+               						<div class="col-md-4 col-xs-12 btn-group btn-input clearfix">
+                 					<button type="button" class="btn btn-default movies-toggle dropdown-toggle form-control" data-toggle="dropdown">
+                   					<span data-bind="label">Select Movie</span>&nbsp;<span class="caret"></span>
+                 					</button>
+                 					<ul class="movies dropdown-menu col-md-11 col-xs-11" role="menu">
+                 					</ul>
+               						</div>
+
+
+
+									<div class="col-md-4 col-xs-12 btn-group btn-input clearfix">
+                 					<button type="button" class="btn btn-default category-toggle dropdown-toggle form-control disabled" data-toggle="dropdown">
+                   					<span data-bind="label">Select Category</span>&nbsp;<span class="caret"></span>
+                 					</button>
+                 					<ul class="movie_category dropdown-menu col-md-11 col-xs-11" role="menu">
+                 					</ul>
+               						</div>
+
+               						<div class="col-md-4 col-xs-12 btn-group btn-input clearfix">
+                 					<button type="button" class="btn btn-default quantity-toggle dropdown-toggle form-control disabled" data-toggle="dropdown">
+                   					<span data-bind="label">Quantity</span>&nbsp;<span class="caret"></span>
+                 					</button>
+                 					<ul class="quantity dropdown-menu col-md-11 col-xs-11" role="menu">
+                 					</ul>
+               						</div>
+               						</div>
+
+
+
+               						<div class="row">
+             						<div class="col-md-2 col-xs-12" style="float:right;">
+									<input class="book col-xs-12 btn btn-md btn-success disabled" type="button" value="Book Tickets">
+									</div>
+									</div>
+
+
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+
+					<div class="seats_alert alert alert-dismissible" role="alert">
+  					<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+  					<span></span>
+					</div>
+					<div class="book_alert alert alert-success alert-dismissible" role="alert">
+  					<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+  					<span></span>
+					</div>
+
+						<div class="main_container" id="container">
+
+							<!--Inside here the seat map will be created by the js file-->
+						</div>
+					</div>
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-primary disabled checkout">Checkout</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+	</body>
+<script type="text/javascript" src="{% static 'master/js/jquery.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'master/js/bootstrap.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'master/js/bookShow.js' %}">
+</script>
+</html>
